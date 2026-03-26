@@ -85,8 +85,8 @@ python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
+**Optional Training:**
 
-Training
 PyGeometric custom GraphSAGE (Unified Spatio‑Temporal with embedding)
 ```
 bash
@@ -97,7 +97,6 @@ python src/evaluation/temporal/graphsage_with_preprocessing.py \
     --split 1 \
     --output_dir ./models/graphsage
 ```
-**Optional:**
 
 PyTorch custom Temporal Transformer (with embedding)
 ```
