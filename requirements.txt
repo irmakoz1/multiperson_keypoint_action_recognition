@@ -1,0 +1,29 @@
+transformers
+timm==0.4.9
+einops
+networkx
+pyvis
+pillow
+tensorboard>=2.13.0
+matplotlib>=3.5.0
+pyyaml>=6.0
+tqdm>=4.65.0
+scipy>=1.10.0
+info-nce-pytorch>=0.1.4
+torch-scatter -f https://data.pyg.org/whl/torch-2.10.0+cpu.html
+torch-sparse -f https://data.pyg.org/whl/torch-2.10.0+cpu.html
+torch-cluster -f https://data.pyg.org/whl/torch-2.10.0+cpu.html
+torch-spline-conv -f https://data.pyg.org/whl/torch-2.10.0+cpu.html
+torch-geometric -f https://data.pyg.org/whl/torch-2.10.0+cpu.html
+lightly
+xgboost
+scikit-learn
+pygame
+imageIO
+coverage
+numba==0.64.0
+imageio[ffmpeg]
+rarfile
+unrar==0.4
+mpose
+pyav

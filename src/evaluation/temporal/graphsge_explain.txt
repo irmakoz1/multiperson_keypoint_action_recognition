@@ -1,0 +1,64 @@
+1. Input: Raw Keypoint Sequence
+Each sample is a tensor of shape (batch, T, J, 3) where T = 20 frames, J = 17 joints, and 3 features (x, y, confidence).
+
+The first step is to apply the JointFeatureExtractor (your custom module) to each frame independently. This extractor:
+
+Applies torso normalization.
+
+Computes biomechanical angles, relative positions, and confidence encoding.
+
+Outputs a 64‑dim joint embedding for each joint in the frame.
+
+After the extractor, we have a tensor of shape (batch, T, J, 64). This becomes the node features for the spatio‑temporal graph.
+
+2. Building the Spatio‑Temporal Graph
+The graph is constructed for a single sequence (per person) with N = T × J nodes.
+
+Spatial edges: Connect joints based on the skeleton structure (e.g., shoulder → elbow). These edges are repeated for each frame, so the same bone connections exist in every frame.
+
+Temporal edges: Connect the same joint across consecutive frames (frame t → frame t+1). This allows information to flow through time.
+
+All edges are undirected (both directions added). The resulting adjacency matrix has about ~2 × (spatial_edges_per_frame × T + temporal_edges) entries.
+
+3. GraphSAGE Layers
+The model uses 3 GraphSAGE convolutional layers (graphsage_hidden_dims = [128, 256, 128]). Each layer consists of:
+
+SAGEConv: Aggregates neighbor features using mean aggregation, then combines with the node's own features.
+
+BatchNorm1d: Applied to the output of the convolution (over the node dimension).
+
+ReLU activation.
+
+Residual connection: The input is added after the activation, but if the input dimension differs from the output dimension, a learnable linear projection is applied first (via projs).
+
+Dropout (p=0.3) after the residual.
+
+This design helps with gradient flow and stabilises training.
+
+4. Pooling to a Graph‑Level Representation
+After the three GraphSAGE layers, we have node embeddings for all nodes in the graph (each node is a joint at a specific time step). To get a single vector for the whole sequence, we use multi‑head attention pooling (4 heads). For each head, we compute attention scores over all nodes, then take a weighted sum. The outputs from all heads are concatenated, resulting in a (batch, hidden_dim × num_heads) vector.
+
+5. Classification Head
+The pooled vector is fed into a small MLP:
+
+Linear( hidden_dim × 4, 128 )
+
+BatchNorm1d
+
+ReLU
+
+Dropout
+
+Linear(128, num_actions)
+
+The final logits are converted to probabilities via softmax.
+
+Key Points
+BatchNorm is applied to node features (across the node dimension) after each GraphSAGE layer, not across the batch dimension. This is typical for graph networks because the number of nodes per graph varies.
+
+Residual connections help train deeper networks.
+
+The extractor is trained end‑to‑end alongside GraphSAGE, so the model learns task‑specific joint embeddings.
+
+No pre‑trained weights are used; everything is trained from scratch on MPOSE2021.
+

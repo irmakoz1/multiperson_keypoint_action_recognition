@@ -1,0 +1,7 @@
+Embedding key: joint_embeddings
+Pooling method: last_frame
+Number of samples: 2867
+Number of classes: 20
+Silhouette Score: -0.1679
+Davies-Bouldin Score: 8.4688
+Calinski-Harabasz Score: 30.35

@@ -1,0 +1,5 @@
+model_dir,model_type,window_size,batch_size,hidden_dim,num_layers,num_heads,dropout,best_train_acc,best_val_acc,best_val_bal_acc,bal_source,test_bal_acc,best_val_loss
+outputs\temporal\graphsage_temporal,Unified GraphSAGE (extractor),N/A,N/A,N/A,N/A,N/A,N/A,0.8500238815475243,0.8001395186606208,0.7477431772065899,bal_acc,,0.6301299932828276
+outputs\temporal\transformer_raw_mpose,Temporal Transformer (raw),20,64,128,4,8,0.3,0.9188823435758637,0.7861876525985351,0.7226960780138132,val_bal_acc,,0.8847101521712377
+outputs\temporal\graphsage_raw,Unified GraphSAGE (raw),N/A,N/A,N/A,N/A,N/A,N/A,0.8236745741124025,0.7729333798395536,0.716261777720009,bal_acc,,0.7238446547567615
+outputs\temporal\temporal_transformer_mpose,Temporal Transformer (extractor),20,64,128,4,8,0.3,0.7438306002228945,0.7192186955005232,0.6558345461248193,val_bal_acc,,0.9679802880990492

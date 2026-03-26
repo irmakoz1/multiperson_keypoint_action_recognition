@@ -1,0 +1,24 @@
+{
+  "class_names": [
+    "standing",
+    "check-watch",
+    "cross-arms",
+    "scratch-head",
+    "sit-down",
+    "get-up",
+    "turn",
+    "walk",
+    "wave1",
+    "box",
+    "kick",
+    "point",
+    "pick-up",
+    "bend",
+    "hands-clap",
+    "wave2",
+    "jog",
+    "jump",
+    "pjump",
+    "run"
+  ]
+}

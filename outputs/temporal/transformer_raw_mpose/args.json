@@ -1,0 +1,14 @@
+{
+  "seq_len": 20,
+  "batch_size": 64,
+  "epochs": 100,
+  "lr": 0.001,
+  "hidden_dim": 128,
+  "num_heads": 8,
+  "num_layers": 4,
+  "dropout": 0.3,
+  "device": "cpu",
+  "patience": 30,
+  "output_dir": "./transformer_raw_mpose",
+  "split": 1
+}
