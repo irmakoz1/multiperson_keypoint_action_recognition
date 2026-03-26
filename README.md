@@ -97,7 +97,7 @@ python src/evaluation/temporal/graphsage_with_preprocessing.py \
     --split 1 \
     --output_dir ./models/graphsage
 ```
-
+**Optional:**
 
 PyTorch custom Temporal Transformer (with embedding)
 ```
