@@ -1,3 +1,0 @@
-import mpose
-dataset = mpose.MPOSE(pose_extractor='openpose', split=1, transform='scale_and_center')
-X_train, y_train, X_test, y_test = dataset.get_dataset()
