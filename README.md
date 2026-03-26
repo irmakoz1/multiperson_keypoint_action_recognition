@@ -24,15 +24,15 @@
   <img width="3000" height="1000" alt="Azure Databricks Data Lake-2026-03-24-005952" src="https://github.com/user-attachments/assets/3207c4b2-ee33-4326-bbac-eb09f64c2d8c" />
 
 
-Sliding window inference – buffers per‑person keypoints over the last 20‑30 frames.
+  Sliding window inference – buffers per‑person keypoints over the last 20‑30 frames.
 
-Smooth live display – three‑thread design separates capture, heavy processing, and display.
+  Smooth live display – three‑thread design separates capture, heavy processing, and display.
 
-Customisable drawing – bounding boxes, skeletons, action labels with confidence.
+  Customisable drawing – bounding boxes, skeletons, action labels with confidence.
 
-Supports camera by name (Windows DirectShow via PyAV) or index.
+  Supports camera by name (Windows DirectShow via PyAV) or index.
 
-Video saving to MP4.
+  Video saving to MP4.
 
 ## Architecture
 
@@ -143,27 +143,27 @@ python src/pipeline/smooth_live_pipeline.py \
 ```
 
 ### Argument	Description
---video	Camera index (e.g., 0) or camera name (e.g., "PC-LM1E Camera") or video file path.
+  --video	Camera index (e.g., 0) or camera name (e.g., "PC-LM1E Camera") or video file path.
 
---model_path	Path to trained best_model.pth.
+  --model_path	Path to trained best_model.pth.
 
---class_info	Path to class_info.json.
+  --class_info	Path to class_info.json.
 
---temporal_model	Either graphsage or transformer.
+  --temporal_model	Either graphsage or transformer.
 
---window_size	Number of frames in sliding window (must match training).
+  --window_size	Number of frames in sliding window (must match training).
 
---det_input_size	Downscaled size for YOLO detection (e.g., 480 360).
+  --det_input_size	Downscaled size for YOLO detection (e.g., 480 360).
 
---process_interval	Process every N frames (higher = faster but slower reaction).
+  --process_interval	Process every N frames (higher = faster but slower reaction).
 
---draw_skeleton	Draw skeleton lines and joints.
+  --draw_skeleton	Draw skeleton lines and joints.
 
---draw_boxes	Draw bounding boxes.
+  --draw_boxes	Draw bounding boxes.
 
---draw_labels	Draw action label and confidence.
+  --draw_labels	Draw action label and confidence.
 
---output	Save output video (MP4).
+  --output	Save output video (MP4).
 
 ### Models: 
 
@@ -177,29 +177,29 @@ python src/pipeline/smooth_live_pipeline.py \
 | **Tracker** | SimpleMPT | Kalman filter + IOU with NMS | Custom implementation |
 
 # Optimisation Tips:
-- Increase --process_interval (e.g., 4 or 5) to reduce processing load.
+  - Increase --process_interval (e.g., 4 or 5) to reduce processing load.
 
-- Lower --det_input_size to 320 240 for faster detection.
+  - Lower --det_input_size to 320 240 for faster detection.
 
-- Use GPU (--device cuda) if available – this is the biggest speedup.
+  - Use GPU (--device cuda) if available – this is the biggest speedup.
 
-- Quantise models with ONNX or TorchScript for faster CPU inference.
+  - Quantise models with ONNX or TorchScript for faster CPU inference.
 
-- Disable skeleton drawing if not needed (--draw_skeleton False).
+  - Disable skeleton drawing if not needed (--draw_skeleton False).
 
 ### Troubleshooting
-“No such file: …” – ensure you have class_info.json.
+  “No such file: …” – ensure you have class_info.json.
 
-PyAV cannot find camera – use camera index (e.g., 0) or install PyAV and provide the exact name as shown in Windows Device Manager.
+  PyAV cannot find camera – use camera index (e.g., 0) or install PyAV and provide the exact name as shown in Windows Device Manager.
 
-Low FPS – increase --process_interval, lower --det_input_size, and ensure you are using GPU.
+  Low FPS – increase --process_interval, lower --det_input_size, and ensure you are using GPU.
 
-Duplicate tracks – adjust --iou_thresh and --max_lost in the tracker; the pipeline already applies NMS.
+  Duplicate tracks – adjust --iou_thresh and --max_lost in the tracker; the pipeline already applies NMS.
 
-Poor keypoint accuracy – increase detection confidence (--conf_thresh), use raw detection boxes (the pipeline does this by default after the tracker update), or expand bounding boxes slightly in the code.
+  Poor keypoint accuracy – increase detection confidence (--conf_thresh), use raw detection boxes (the pipeline does this by default after the tracker update), or expand bounding   boxes slightly in the code.
 
 ### Acknowledgements
-This project uses several excellent open‑source libraries:
+This project uses several open‑source libraries:
 
 [Ultralytics YOLO](https://github.com/ultralytics/ultralytics) – object detection.
 
