@@ -168,6 +168,17 @@ python src/pipeline/smooth_live_pipeline.py
 | **Feature Extractor** | MPOSEFeatureExtractor | Custom – includes angles, velocities, relative positions | – |
 | **Tracker** | SimpleMPT | Kalman filter + IOU with NMS | Custom implementation |
 
+
+## Temporal Custom Model Performances:
+
+| Model Type                     | Window Size | Batch Size | Hidden Dim | Num Layers | Num Heads | Dropout | Best Train Acc | Best Val Acc | Best Val Bal Acc | Best Val Loss |
+|--------------------------------|-------------|------------|------------|------------|-----------|---------|----------------|--------------|------------------|---------------|
+| Unified GraphSAGE (extractor)  | 20          | 64         | 128        | 3          | 4         | 0.3     | 0.8500         | 0.8001       | 0.7477           | 0.6301        |
+| Temporal Transformer (raw)     | 20          | 64         | 128        | 4          | 8         | 0.3     | 0.9189         | 0.7862       | 0.7227           | 0.8847        |
+| Unified GraphSAGE (raw)        | 20          | 64         | 128        | 3          | 4         | 0.3     | 0.8237         | 0.7729       | 0.7163           | 0.7238        |
+| Temporal Transformer (extractor)| 20          | 64         | 128        | 4          | 8         | 0.3     | 0.7438         | 0.7192       | 0.6558           | 0.9680        |
+
+results
 # Optimisation Tips:
   - Increase --process_interval (e.g., 4 or 5) to reduce processing load.
 
