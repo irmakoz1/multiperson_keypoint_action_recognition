@@ -21,7 +21,7 @@
   <img width="3000" height="1000" alt="Azure Databricks Data Lake-2026-03-24-003809" src="https://github.com/user-attachments/assets/659ae709-1f9a-46d0-be59-dd5b28d6b2fe" />
 
 - Temporal Transformer – frame‑level transformer with optional raw keypoints.
-  <img width="3000" height="1000" alt="Azure Databricks Data Lake-2026-03-24-005952" src="https://github.com/user-attachments/assets/3207c4b2-ee33-4326-bbac-eb09f64c2d8c" />
+<img width="3000" height="1000" alt="GraphSAGE Action-2026-03-26-152937" src="https://github.com/user-attachments/assets/5d31c033-11e8-4ea5-b784-cddefcec7b6b" />
 
 
   Sliding window inference – buffers per‑person keypoints over the last 20‑30 frames.
