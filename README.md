@@ -248,5 +248,7 @@ This project uses several open‑source libraries:
   [Pygame](https://www.pygame.org/news) – display.
 
   [PyAV](https://github.com/PyAV-Org/PyAV) – camera capture.
+  
+ [Nice Repository with Recent Articles on Action Recognition](https://github.com/firework8/Awesome-Skeleton-based-Action-Recognition?tab=readme-ov-file)
 
 
